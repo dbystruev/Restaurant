@@ -16,6 +16,8 @@
 		6964A9AD20C72EE000921F08 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6964A9AC20C72EE000921F08 /* CategoryTableViewController.swift */; };
 		6964A9AF20C72EF900921F08 /* OrderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6964A9AE20C72EF900921F08 /* OrderTableViewController.swift */; };
 		6964A9B120C7313700921F08 /* MenuItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6964A9B020C7313700921F08 /* MenuItemDetailViewController.swift */; };
+		6964A9B320C7325200921F08 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6964A9B220C7325200921F08 /* MenuItem.swift */; };
+		6964A9B520C7342E00921F08 /* IntermediaryModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6964A9B420C7342E00921F08 /* IntermediaryModels.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		6964A9AC20C72EE000921F08 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		6964A9AE20C72EF900921F08 /* OrderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewController.swift; sourceTree = "<group>"; };
 		6964A9B020C7313700921F08 /* MenuItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemDetailViewController.swift; sourceTree = "<group>"; };
+		6964A9B220C7325200921F08 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
+		6964A9B420C7342E00921F08 /* IntermediaryModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntermediaryModels.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,11 +67,13 @@
 			isa = PBXGroup;
 			children = (
 				6964A99620C7258C00921F08 /* AppDelegate.swift */,
-				6964A99820C7258C00921F08 /* ViewController.swift */,
 				6964A9AC20C72EE000921F08 /* CategoryTableViewController.swift */,
+				6964A9B420C7342E00921F08 /* IntermediaryModels.swift */,
+				6964A9B220C7325200921F08 /* MenuItem.swift */,
 				6964A9B020C7313700921F08 /* MenuItemDetailViewController.swift */,
 				6964A9AA20C72EB700921F08 /* MenuTableTableViewController.swift */,
 				6964A9AE20C72EF900921F08 /* OrderTableViewController.swift */,
+				6964A99820C7258C00921F08 /* ViewController.swift */,
 				6964A99A20C7258C00921F08 /* Main.storyboard */,
 				6964A99D20C7259300921F08 /* Assets.xcassets */,
 				6964A99F20C7259300921F08 /* LaunchScreen.storyboard */,
@@ -147,9 +153,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6964A9B320C7325200921F08 /* MenuItem.swift in Sources */,
 				6964A99920C7258C00921F08 /* ViewController.swift in Sources */,
 				6964A9B120C7313700921F08 /* MenuItemDetailViewController.swift in Sources */,
 				6964A9AF20C72EF900921F08 /* OrderTableViewController.swift in Sources */,
+				6964A9B520C7342E00921F08 /* IntermediaryModels.swift in Sources */,
 				6964A9AB20C72EB700921F08 /* MenuTableTableViewController.swift in Sources */,
 				6964A99720C7258C00921F08 /* AppDelegate.swift in Sources */,
 				6964A9AD20C72EE000921F08 /* CategoryTableViewController.swift in Sources */,
