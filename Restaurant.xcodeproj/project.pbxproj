@@ -12,6 +12,10 @@
 		6964A99C20C7258C00921F08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6964A99A20C7258C00921F08 /* Main.storyboard */; };
 		6964A99E20C7259300921F08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6964A99D20C7259300921F08 /* Assets.xcassets */; };
 		6964A9A120C7259300921F08 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6964A99F20C7259300921F08 /* LaunchScreen.storyboard */; };
+		6964A9AB20C72EB700921F08 /* MenuTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6964A9AA20C72EB700921F08 /* MenuTableTableViewController.swift */; };
+		6964A9AD20C72EE000921F08 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6964A9AC20C72EE000921F08 /* CategoryTableViewController.swift */; };
+		6964A9AF20C72EF900921F08 /* OrderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6964A9AE20C72EF900921F08 /* OrderTableViewController.swift */; };
+		6964A9B120C7313700921F08 /* MenuItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6964A9B020C7313700921F08 /* MenuItemDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		6964A99D20C7259300921F08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6964A9A020C7259300921F08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6964A9A220C7259300921F08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6964A9AA20C72EB700921F08 /* MenuTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableTableViewController.swift; sourceTree = "<group>"; };
+		6964A9AC20C72EE000921F08 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
+		6964A9AE20C72EF900921F08 /* OrderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewController.swift; sourceTree = "<group>"; };
+		6964A9B020C7313700921F08 /* MenuItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,10 @@
 			children = (
 				6964A99620C7258C00921F08 /* AppDelegate.swift */,
 				6964A99820C7258C00921F08 /* ViewController.swift */,
+				6964A9AC20C72EE000921F08 /* CategoryTableViewController.swift */,
+				6964A9B020C7313700921F08 /* MenuItemDetailViewController.swift */,
+				6964A9AA20C72EB700921F08 /* MenuTableTableViewController.swift */,
+				6964A9AE20C72EF900921F08 /* OrderTableViewController.swift */,
 				6964A99A20C7258C00921F08 /* Main.storyboard */,
 				6964A99D20C7259300921F08 /* Assets.xcassets */,
 				6964A99F20C7259300921F08 /* LaunchScreen.storyboard */,
@@ -136,7 +148,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6964A99920C7258C00921F08 /* ViewController.swift in Sources */,
+				6964A9B120C7313700921F08 /* MenuItemDetailViewController.swift in Sources */,
+				6964A9AF20C72EF900921F08 /* OrderTableViewController.swift in Sources */,
+				6964A9AB20C72EB700921F08 /* MenuTableTableViewController.swift in Sources */,
 				6964A99720C7258C00921F08 /* AppDelegate.swift in Sources */,
+				6964A9AD20C72EE000921F08 /* CategoryTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
