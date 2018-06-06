@@ -24,7 +24,14 @@ class MenuController {
         
         // create a task for network call to get the list of categories
         let task = URLSession.shared.dataTask(with: categoryURL) { (data, response, error) in
-            
+            // /categories endpoint decoded into a Categories object
+            if let data = data,
+                let jsonDictionary = try? JSONSerialization.jsonObject(with: data) as? [String:Any],
+                let categories = jsonDictionary?["categories"] as? [String] {
+                completion(categories)
+            } else {
+                completion(nil)
+            }
         }
         
         // begin the network call to get the list of categories
@@ -49,7 +56,14 @@ class MenuController {
         
         // create a task for category menu network call
         let task = URLSession.shared.dataTask(with: menuURL) { (data, response, error) in
-            
+            // data from /menu converted into an array of MenuItem objects
+            let jsonDecoder = JSONDecoder()
+            if let data = data,
+                let menuItems = try? jsonDecoder.decode(MenuItems.self, from: data) {
+                completion(menuItems.items)
+            } else {
+                completion(nil)
+            }
         }
         
         // begin the category menu network call
@@ -60,7 +74,7 @@ class MenuController {
     /// - parameters:
     ///     - menuIds: array of the dishes' IDs in the order
     ///     - completion: a closure that takes the order preparation time
-    func submitOrder(menuIds: [Int], completion: (Int?) -> Void) {
+    func submitOrder(menuIds: [Int], completion: @escaping (Int?) -> Void) {
         // full URL for order posting is .../order
         let orderURL = baseURL.appendingPathComponent("order")
         
@@ -70,7 +84,7 @@ class MenuController {
         // modify request's method to POST
         request.httpMethod = "POST"
         
-        // tell the srver what kind of data we are sending — JSON
+        // tell the server what kind of data we are sending — JSON
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         // encode the array of menu IDs into JSON
@@ -78,9 +92,19 @@ class MenuController {
         let jsonEncoder = JSONEncoder()
         let jsonData = try? jsonEncoder.encode(data)
         
+        // data for a POST must be stored within the body of the request
+        request.httpBody = jsonData
+        
         // create a task for order network call
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            
+            // POST to /order returns JSON data which has to be decoded into PreparationTime
+            let jsonDecoder = JSONDecoder()
+            if let data = data,
+                let preparationTime = try? jsonDecoder.decode(PreparationTime.self, from: data) {
+                completion(preparationTime.prepTime)
+            } else {
+                completion(nil)
+            }
         }
         
         // begin the order network call
