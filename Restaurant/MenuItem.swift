@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Properties correspond to the keys listed in the API
 struct MenuItem: Codable {
     var id: Int
     var name: String
@@ -26,6 +27,7 @@ struct MenuItem: Codable {
     }
 }
 
+// The top key returned by API is called items
 struct MenuItems: Codable {
     let items: [MenuItem]
 }

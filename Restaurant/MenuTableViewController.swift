@@ -5,10 +5,11 @@
 //  Created by Denis Bystruev on 05/06/2018.
 //  Copyright © 2018 Denis Bystruev. All rights reserved.
 //
+//  View controller for the screen after the category was selected
 
 import UIKit
 
-class MenuTableTableViewController: UITableViewController {
+class MenuTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

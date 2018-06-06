@@ -5,6 +5,7 @@
 //  Created by Denis Bystruev on 05/06/2018.
 //  Copyright © 2018 Denis Bystruev. All rights reserved.
 //
+//  View controller for the details of a particular food
 
 import UIKit
 

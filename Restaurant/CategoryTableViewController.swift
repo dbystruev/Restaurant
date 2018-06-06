@@ -5,6 +5,7 @@
 //  Created by Denis Bystruev on 05/06/2018.
 //  Copyright © 2018 Denis Bystruev. All rights reserved.
 //
+//  View controller for the first screen of the app — menu categories
 
 import UIKit
 
