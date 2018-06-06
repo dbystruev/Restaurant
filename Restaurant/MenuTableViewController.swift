@@ -12,15 +12,39 @@ import UIKit
 class MenuTableViewController: UITableViewController {
     /// The category name we should receive from CategoryTableViewController
     var category: String!
+    
+    /// Array of menu items to be displayed in the table
+    var menuItems = [MenuItem]()
+    
+    /// Instance of MenuController to make network requests
+    let menuController = MenuController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        // Table title is capitalized category name
+        title = category.capitalized
+        
+        // Load the menu for a given category
+        menuController.fetchMenuItems(categoryName: category) { (menuItems) in
+            // if we indeed got the menu items
+            if let menuItems = menuItems {
+                // update the interface
+                self.updateUI(with: menuItems)
+            }
+        }
+    }
+    
+    /// Set the property and update the interface
+    func updateUI(with menuItems: [MenuItem]) {
+        // have to go back to main queue from background queue where network requests are exectured
+        DispatchQueue.main.async {
+            // remember the menu items for diplaying in the table
+            self.menuItems = menuItems
+            
+            // reload the table
+            self.tableView.reloadData()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,24 +55,39 @@ class MenuTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        // there is only one section
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        // the number of cells is equal to the size of menu items array
+        return menuItems.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        // reuse the menu list prototype cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCellIdentifier", for: indexPath)
 
-        // Configure the cell...
+        // configure the cell with menu list data
+        configure(cell: cell, forItemAt: indexPath)
 
         return cell
     }
-    */
+    
+    /// Configure the table cell with menu list data
+    /// - parameters:
+    ///     - cell: The cell to be configured
+    ///     - indexPath: An index path locating a row in tableView
+    func configure(cell: UITableViewCell, forItemAt indexPath: IndexPath) {
+        // get the needed menu item for corresponding table row
+        let menuItem = menuItems[indexPath.row]
+        
+        // the left label of the cell should display the name of the item
+        cell.textLabel?.text = menuItem.name
+        
+        // the right label displays the price along with currency symbol
+        cell.detailTextLabel?.text = String(format: "$%.2f", menuItem.price)
+    }
 
     /*
     // Override to support conditional editing of the table view.

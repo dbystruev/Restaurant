@@ -33,9 +33,12 @@ class CategoryTableViewController: UITableViewController {
     /// - parameters:
     ///     - categories: Array of categories to display
     func updateUI(with categories: [String]) {
-        // Since network requests are called on a background thread we need to return to the main thread to update UI immediately
+        // since network requests are called on a background thread we need to return to the main thread to update UI immediately
         DispatchQueue.main.async {
+            // remember the list of categories to display in the table
             self.categories = categories
+            
+            // reload the categories table
             self.tableView.reloadData()
         }
     }
