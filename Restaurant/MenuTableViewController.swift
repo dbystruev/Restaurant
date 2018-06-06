@@ -10,6 +10,8 @@
 import UIKit
 
 class MenuTableViewController: UITableViewController {
+    /// The category name we should receive from CategoryTableViewController
+    var category: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()

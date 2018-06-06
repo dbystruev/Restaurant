@@ -36,7 +36,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="CYH-k2-goG" kind="show" id="osq-bd-IXD"/>
+                                    <segue destination="CYH-k2-goG" kind="show" identifier="MenuSeque" id="osq-bd-IXD"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

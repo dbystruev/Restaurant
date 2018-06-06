@@ -75,7 +75,7 @@ class CategoryTableViewController: UITableViewController {
         // get the name of the category
         let categoryString = categories[indexPath.row]
         
-        // make sure it is capitilized to clean up the appearance of categories
+        // make sure it is capitalized to clean up the appearance of categories
         cell.textLabel?.text = categoryString.capitalized
     }
 
@@ -114,14 +114,21 @@ class CategoryTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // Need to pass the name of the chosen category before showing the category menu
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        // make sure the segue is from category to menu table view controllers
+        if segue.identifier == "MenuSegue" {
+            // we can safely downcast to MenuTableViewController
+            let menuTableViewController = segue.destination as! MenuTableViewController
+            
+            // index in the category array is equal to the selected table row number
+            let index = tableView.indexPathForSelectedRow!.row
+            
+            // store the name of the category in the destination menu table view controller
+            menuTableViewController.category = categories[index]
+        }
     }
-    */
 
 }
