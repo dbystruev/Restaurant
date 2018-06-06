@@ -16,7 +16,7 @@ class MenuController {
     
     /// Execute GET request for the categories with /categories
     /// - parameters:
-    ///     - completion: the closure which accepts the array of strings returned by JSON
+    ///     - completion: The closure which accepts the array of strings returned by JSON
     func fetchCategories(completion: @escaping ([String]?) -> Void) {
         
         // full URL for category request is.../categories
@@ -40,8 +40,8 @@ class MenuController {
     
     /// Execute GET request from /menu with query parameter — category name
     /// - parameters:
-    ///     - categoryName: the name of the category
-    ///     - completion: the closure which accepts the MenuItem array returned by JSON
+    ///     - categoryName: The name of the category
+    ///     - completion: The closure which accepts the MenuItem array returned by JSON
     func fetchMenuItems(categoryName: String, completion: @escaping([MenuItem]?) -> Void) {
         
         // add /menu to the request URL
@@ -72,8 +72,8 @@ class MenuController {
     
     /// Execute POST request to /order with the user's order
     /// - parameters:
-    ///     - menuIds: array of the dishes' IDs in the order
-    ///     - completion: a closure that takes the order preparation time
+    ///     - menuIds: Array of the dishes' IDs in the order
+    ///     - completion: A closure that takes the order preparation time
     func submitOrder(menuIds: [Int], completion: @escaping (Int?) -> Void) {
         // full URL for order posting is .../order
         let orderURL = baseURL.appendingPathComponent("order")

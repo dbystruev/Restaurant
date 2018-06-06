@@ -10,15 +10,34 @@
 import UIKit
 
 class CategoryTableViewController: UITableViewController {
+    /// Instance of MenuController to make network requests
+    let menuController = MenuController()
+    
+    /// Names of the menu categories
+    var categories = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        // get the list of categories
+        menuController.fetchCategories{ (categories) in
+            // if we indeed got the list of categories
+            if let categories = categories {
+                // update the table with categories
+                self.updateUI(with: categories)
+            }
+        }
+    }
+    
+    /// Update the categories table
+    /// - parameters:
+    ///     - categories: Array of categories to display
+    func updateUI(with categories: [String]) {
+        // Since network requests are called on a background thread we need to return to the main thread to update UI immediately
+        DispatchQueue.main.async {
+            self.categories = categories
+            self.tableView.reloadData()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,24 +48,36 @@ class CategoryTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        // There is only one section — the list of categories
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        // number of sections is equal to number of categories we have
+        return categories.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        // reuse a category prototype cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCellIdentifier", for: indexPath)
 
         // Configure the cell...
+        configure(cell: cell, forItemAt: indexPath)
 
         return cell
     }
-    */
+    
+    /// Configure the table cell with category data
+    /// - parameters:
+    ///     - cell: The cell to be configured
+    ///     - indexPath: An index path locating a row in tableView
+    func configure(cell: UITableViewCell, forItemAt indexPath: IndexPath) {
+        // get the name of the category
+        let categoryString = categories[indexPath.row]
+        
+        // make sure it is capitilized to clean up the appearance of categories
+        cell.textLabel?.text = categoryString.capitalized
+    }
 
     /*
     // Override to support conditional editing of the table view.
