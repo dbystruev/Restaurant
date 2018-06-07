@@ -10,6 +10,9 @@
 import UIKit
 
 class OrderTableViewController: UITableViewController {
+    
+    /// The list of ordered items
+    var menuItems = [MenuItem]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,25 +31,36 @@ class OrderTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        // the number of rows is equal to the number of items in menuItems array
+        return menuItems.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        // Configure the cell...
+        // reuse the order list prototype cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OrderCellIdentifier", for: indexPath)
+        
+        // configure the cell with menu list data
+        configure(cell: cell, forItemAt: indexPath)
 
         return cell
     }
-    */
+    
+    /// Configure the cell with order list data
+    /// - parameters:
+    ///     - cell: The cell to be configured
+    ///     - indexPath: An index path locating a row in tableView
+    func configure(cell: UITableViewCell, forItemAt indexPath: IndexPath) {
+        // get the needed menu item for corresponding table row
+        let menuItem = menuItems[indexPath.row]
+        
+        // the left label of the cell should display the name of the item
+        cell.textLabel?.text = menuItem.name
+        
+        // the right label displays the price along with currency symbol
+        cell.detailTextLabel?.text = String(format: "$%.2f", menuItem.price)
+    }
 
     /*
     // Override to support conditional editing of the table view.

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		6964A99720C7258C00921F08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6964A99620C7258C00921F08 /* AppDelegate.swift */; };
-		6964A99920C7258C00921F08 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6964A99820C7258C00921F08 /* ViewController.swift */; };
 		6964A99C20C7258C00921F08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6964A99A20C7258C00921F08 /* Main.storyboard */; };
 		6964A99E20C7259300921F08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6964A99D20C7259300921F08 /* Assets.xcassets */; };
 		6964A9A120C7259300921F08 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6964A99F20C7259300921F08 /* LaunchScreen.storyboard */; };
@@ -24,7 +23,6 @@
 /* Begin PBXFileReference section */
 		6964A99320C7258C00921F08 /* Restaurant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Restaurant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6964A99620C7258C00921F08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6964A99820C7258C00921F08 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6964A99B20C7258C00921F08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6964A99D20C7259300921F08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6964A9A020C7259300921F08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -76,7 +74,6 @@
 				6964A9B020C7313700921F08 /* MenuItemDetailViewController.swift */,
 				6964A9AA20C72EB700921F08 /* MenuTableViewController.swift */,
 				6964A9AE20C72EF900921F08 /* OrderTableViewController.swift */,
-				6964A99820C7258C00921F08 /* ViewController.swift */,
 				6964A99A20C7258C00921F08 /* Main.storyboard */,
 				6964A99D20C7259300921F08 /* Assets.xcassets */,
 				6964A99F20C7259300921F08 /* LaunchScreen.storyboard */,
@@ -158,7 +155,6 @@
 			files = (
 				6964A9B320C7325200921F08 /* MenuItem.swift in Sources */,
 				6964A9B720C7372200921F08 /* MenuController.swift in Sources */,
-				6964A99920C7258C00921F08 /* ViewController.swift in Sources */,
 				6964A9B120C7313700921F08 /* MenuItemDetailViewController.swift in Sources */,
 				6964A9AF20C72EF900921F08 /* OrderTableViewController.swift in Sources */,
 				6964A9B520C7342E00921F08 /* IntermediaryModels.swift in Sources */,
