@@ -10,10 +10,10 @@ import UIKit
 
 class OrderConfirmationViewController: UIViewController {
 
-    // Label with time remaining information
+    /// Label with time remaining information
     @IBOutlet weak var timeRemainingLabel: UILabel!
     
-    // Go back to order list when the dismiss button is pressed
+    /// Go back to order list when the dismiss button is pressed
     @IBAction func unwindToOrderList(segue: UIStoryboardSegue) {
     }
     

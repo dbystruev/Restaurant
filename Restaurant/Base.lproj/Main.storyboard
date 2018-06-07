@@ -215,7 +215,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Your Order" id="Q9d-QX-kEW">
-                        <barButtonItem key="rightBarButtonItem" title="Submit" id="aj4-sk-tFp"/>
+                        <barButtonItem key="rightBarButtonItem" title="Submit" id="aj4-sk-tFp">
+                            <connections>
+                                <action selector="submitTapped:" destination="dJ1-vk-hWv" id="GUz-Ww-azu"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="iHV-rQ-tVx" kind="presentation" identifier="ConfirmationSegue" id="Vud-tx-6yF"/>

@@ -13,7 +13,60 @@ class OrderTableViewController: UITableViewController, AddToOrderDelegate {
     
     /// The list of ordered items
     var menuItems = [MenuItem]()
+    
+    /// Minutes remaining for the order
+    var orderMinutes = 0
 
+    /// Alert the user that their order will be submitted if they continue
+    @IBAction func submitTapped(_ sender: UIBarButtonItem) {
+        // calculate the total order cost
+        let orderTotal = menuItems.reduce(0.0) { (result, menuItem) -> Double in
+            return result + menuItem.price
+        }
+        
+        // format the order total price
+        let formattedOrder = String(format: "$%2.f", orderTotal)
+        
+        // prepare an alert for the user
+        let alert = UIAlertController(
+            title: "Confirm Order",
+            message: "You are about to submit your order with a total of \(formattedOrder)",
+            preferredStyle: .alert
+        )
+        
+        // add upload order action on submit
+        alert.addAction(UIAlertAction(title: "Submit", style: .default) { action in
+            self.uploadOrder()
+        })
+        
+        // add cancel on dismiss
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        // present the alert for the user about order submission
+        present(alert, animated: true, completion: nil)
+    }
+    
+    /// Make the request using the submitOrder() method defined in MenuController
+    func uploadOrder() {
+        // create an array menu IDs selected for the order
+        let menuIds = menuItems.map { $0.id }
+        
+        // call submitOrder() from MenuController
+        MenuController.shared.submitOrder(menuIds: menuIds) { minutes in
+            // return to the main queue as network requests are executed in background
+            DispatchQueue.main.async {
+                // check if minutes were returned successfully
+                if let minutes = minutes {
+                    // remember the minutes remaining
+                    self.orderMinutes = minutes
+                    
+                    // perform the segue to confirmation screen
+                    self.performSegue(withIdentifier: "ConfirmationSegue", sender: nil)
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
