@@ -11,6 +11,12 @@ import UIKit
 
 class MenuItemDetailViewController: UIViewController {
     
+    /// MenuItem received from MenuTableViewController
+    var menuItem: MenuItem!
+    
+    /// Delegate to notify that the Add To Order button was tapped
+    var delegate: AddToOrderDelegate?
+    
     /// Food name
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -33,16 +39,19 @@ class MenuItemDetailViewController: UIViewController {
             self.addToOrderButton.transform = CGAffineTransform(scaleX: 3, y: 3)
             self.addToOrderButton.transform = CGAffineTransform(scaleX: 1, y: 1)
         }
+        
+        // notify the delegate that the item was added to the order
+        delegate?.added(menuItem: menuItem)
     }
     
-    /// Holds MenuItem received from MenuTableViewController
-    var menuItem: MenuItem!
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // update the screen with menuItem values
         updateUI()
+        
+        // setup the delegate
+        setupDelegate()
     }
     
     /// Update outlets' properties to match menuItem values
@@ -58,6 +67,15 @@ class MenuItemDetailViewController: UIViewController {
         
         // make button's corners round
         addToOrderButton.layer.cornerRadius = 5
+    }
+    
+    /// Set the delegate so that the selected item passed to order later
+    func setupDelegate() {
+        // find order table view controller through navigation controller
+        if let navController = tabBarController?.viewControllers?.last as? UINavigationController,
+            let orderTableViewController = navController.viewControllers.first as? OrderTableViewController {
+            delegate = orderTableViewController
+        }
     }
 
     override func didReceiveMemoryWarning() {

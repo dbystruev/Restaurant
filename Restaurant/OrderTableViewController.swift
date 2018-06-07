@@ -9,7 +9,7 @@
 
 import UIKit
 
-class OrderTableViewController: UITableViewController {
+class OrderTableViewController: UITableViewController, AddToOrderDelegate {
     
     /// The list of ordered items
     var menuItems = [MenuItem]()
@@ -22,6 +22,16 @@ class OrderTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // fit the detail (price) labels
+        fitDetailLabels()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        // fit the detail (price) labels
+        fitDetailLabels()
     }
 
     override func didReceiveMemoryWarning() {
@@ -106,5 +116,19 @@ class OrderTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    /// Called when menu item is added
+    func added(menuItem: MenuItem) {
+        // append the menu item to the menuItems array
+        menuItems.append(menuItem)
+        
+        // get the total number of menu items
+        let count = menuItems.count
+        
+        // calculate index path for the last row
+        let indexPath = IndexPath(row: count - 1, section: 0)
+        
+        // insert the menu item row to the end of the order table
+        tableView.insertRows(at: [indexPath], with: .automatic)
+    }
 }

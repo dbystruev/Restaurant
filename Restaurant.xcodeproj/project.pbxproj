@@ -18,6 +18,8 @@
 		6964A9B320C7325200921F08 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6964A9B220C7325200921F08 /* MenuItem.swift */; };
 		6964A9B520C7342E00921F08 /* IntermediaryModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6964A9B420C7342E00921F08 /* IntermediaryModels.swift */; };
 		6964A9B720C7372200921F08 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6964A9B620C7372200921F08 /* MenuController.swift */; };
+		699313D820C942F300B9CD5E /* AddToOrderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699313D720C942F300B9CD5E /* AddToOrderDelegate.swift */; };
+		699313DA20C9491600B9CD5E /* UITableViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699313D920C9491600B9CD5E /* UITableViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		6964A9B220C7325200921F08 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		6964A9B420C7342E00921F08 /* IntermediaryModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntermediaryModels.swift; sourceTree = "<group>"; };
 		6964A9B620C7372200921F08 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
+		699313D720C942F300B9CD5E /* AddToOrderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToOrderDelegate.swift; sourceTree = "<group>"; };
+		699313D920C9491600B9CD5E /* UITableViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewControllerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,7 @@
 		6964A99520C7258C00921F08 /* Restaurant */ = {
 			isa = PBXGroup;
 			children = (
+				699313D720C942F300B9CD5E /* AddToOrderDelegate.swift */,
 				6964A99620C7258C00921F08 /* AppDelegate.swift */,
 				6964A9AC20C72EE000921F08 /* CategoryTableViewController.swift */,
 				6964A9B420C7342E00921F08 /* IntermediaryModels.swift */,
@@ -74,6 +79,7 @@
 				6964A9B020C7313700921F08 /* MenuItemDetailViewController.swift */,
 				6964A9AA20C72EB700921F08 /* MenuTableViewController.swift */,
 				6964A9AE20C72EF900921F08 /* OrderTableViewController.swift */,
+				699313D920C9491600B9CD5E /* UITableViewControllerExtension.swift */,
 				6964A99A20C7258C00921F08 /* Main.storyboard */,
 				6964A99D20C7259300921F08 /* Assets.xcassets */,
 				6964A99F20C7259300921F08 /* LaunchScreen.storyboard */,
@@ -153,6 +159,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				699313D820C942F300B9CD5E /* AddToOrderDelegate.swift in Sources */,
 				6964A9B320C7325200921F08 /* MenuItem.swift in Sources */,
 				6964A9B720C7372200921F08 /* MenuController.swift in Sources */,
 				6964A9B120C7313700921F08 /* MenuItemDetailViewController.swift in Sources */,
@@ -161,6 +168,7 @@
 				6964A9AB20C72EB700921F08 /* MenuTableViewController.swift in Sources */,
 				6964A99720C7258C00921F08 /* AppDelegate.swift in Sources */,
 				6964A9AD20C72EE000921F08 /* CategoryTableViewController.swift in Sources */,
+				699313DA20C9491600B9CD5E /* UITableViewControllerExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
