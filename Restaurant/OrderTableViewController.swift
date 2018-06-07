@@ -46,6 +46,21 @@ class OrderTableViewController: UITableViewController, AddToOrderDelegate {
         present(alert, animated: true, completion: nil)
     }
     
+    /// Go back to order list when the dismiss button is pressed
+    @IBAction func unwindToOrderList(segue: UIStoryboardSegue) {
+        // check that we indeed dismissing the confirmation screen
+        if segue.identifier == "DismissConfirmation" {
+            // clear order menu items
+            menuItems.removeAll()
+            
+            // reload the table to show empty list
+            tableView.reloadData()
+            
+            // update the number of items in the order list
+            updateBadgeNumber()
+        }
+    }
+    
     /// Make the request using the submitOrder() method defined in MenuController
     func uploadOrder() {
         // create an array menu IDs selected for the order
@@ -165,15 +180,20 @@ class OrderTableViewController: UITableViewController, AddToOrderDelegate {
     }
     */
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    /// Pass order minutes before the segue to order confirmation page
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
+        // check that we indeed performing the order confirmation seque
+        if segue.identifier == "ConfirmationSegue" {
+            // get the new view controller using segue.destinationViewController.
+            let orderConfirmationViewController = segue.destination as! OrderConfirmationViewController
+            
+            // pass the minutes remaining to the destination view controller
+            orderConfirmationViewController.minutes = orderMinutes
+        }
         // Pass the selected object to the new view controller.
     }
-    */
     
     /// Called when menu item is added
     func added(menuItem: MenuItem) {

@@ -13,17 +13,17 @@ class OrderConfirmationViewController: UIViewController {
     /// Label with time remaining information
     @IBOutlet weak var timeRemainingLabel: UILabel!
     
-    /// Go back to order list when the dismiss button is pressed
-    @IBAction func unwindToOrderList(segue: UIStoryboardSegue) {
-    }
-    
-    // Time remaining in minutes
+    /// Time remaining in minutes
     var minutes: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // see if s at the end needs to be used for plural
+        let s = minutes! == 1 ? "" : "s"
 
-        // Do any additional setup after loading the view.
+        // message to the user with the time remaining
+        timeRemainingLabel.text = "Thank you for your order!  Your wait time is approximatly \(minutes!) minute\(s)."
     }
 
     override func didReceiveMemoryWarning() {
