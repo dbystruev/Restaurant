@@ -10,6 +10,8 @@
 import UIKit
 
 class MenuItemDetailViewController: UIViewController {
+    /// Holds MenuItem received from MenuTableViewController
+    var menuItem: MenuItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
