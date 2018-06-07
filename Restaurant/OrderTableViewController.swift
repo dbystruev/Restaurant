@@ -130,5 +130,17 @@ class OrderTableViewController: UITableViewController, AddToOrderDelegate {
         
         // insert the menu item row to the end of the order table
         tableView.insertRows(at: [indexPath], with: .automatic)
+        
+        // update the badge with the number of items in the order
+        updateBadgeNumber()
+    }
+    
+    /// Update the badge value of the order tab to match the number of items in the order
+    func updateBadgeNumber() {
+        // get the number of items in the order
+        let badgeValue = 0 < menuItems.count ? "\(menuItems.count)" : nil
+        
+        // assign the badge value to the order tab
+        navigationController?.tabBarItem.badgeValue = badgeValue
     }
 }
