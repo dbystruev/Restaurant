@@ -16,9 +16,6 @@ class MenuTableViewController: UITableViewController {
     /// Array of menu items to be displayed in the table
     var menuItems = [MenuItem]()
     
-    /// Instance of MenuController to make network requests
-    let menuController = MenuController()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,7 +23,7 @@ class MenuTableViewController: UITableViewController {
         title = category.capitalized
         
         // Load the menu for a given category
-        menuController.fetchMenuItems(categoryName: category) { (menuItems) in
+        MenuController.shared.fetchMenuItems(categoryName: category) { (menuItems) in
             // if we indeed got the menu items
             if let menuItems = menuItems {
                 // update the interface

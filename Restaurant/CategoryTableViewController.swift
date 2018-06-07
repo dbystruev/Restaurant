@@ -10,9 +10,6 @@
 import UIKit
 
 class CategoryTableViewController: UITableViewController {
-    /// Instance of MenuController to make network requests
-    let menuController = MenuController()
-    
     /// Names of the menu categories
     var categories = [String]()
 
@@ -20,7 +17,7 @@ class CategoryTableViewController: UITableViewController {
         super.viewDidLoad()
         
         // get the list of categories
-        menuController.fetchCategories{ (categories) in
+        MenuController.shared.fetchCategories{ (categories) in
             // if we indeed got the list of categories
             if let categories = categories {
                 // update the table with categories
