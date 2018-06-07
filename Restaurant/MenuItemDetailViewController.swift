@@ -10,13 +10,54 @@
 import UIKit
 
 class MenuItemDetailViewController: UIViewController {
+    
+    /// Food name
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    /// Food image
+    @IBOutlet weak var imageView: UIImageView!
+    
+    /// Food price
+    @IBOutlet weak var priceLabel: UILabel!
+    
+    //// Food description
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
+    /// Food ordering button
+    @IBOutlet weak var addToOrderButton: UIButton!
+    
+    /// Action called when user taps Add To Order button
+    @IBAction func addToOrderButtonTapped(_ sender: UIButton) {
+        // quick bounce animation after the button is pressed
+        UIView.animate(withDuration: 0.3) {
+            self.addToOrderButton.transform = CGAffineTransform(scaleX: 3, y: 3)
+            self.addToOrderButton.transform = CGAffineTransform(scaleX: 1, y: 1)
+        }
+    }
+    
     /// Holds MenuItem received from MenuTableViewController
     var menuItem: MenuItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // update the screen with menuItem values
+        updateUI()
+    }
+    
+    /// Update outlets' properties to match menuItem values
+    func updateUI() {
+        // the name of the food
+        titleLabel.text = menuItem.name
+        
+        // food price
+        priceLabel.text = String(format: "$%.2f", menuItem.price)
+        
+        // detailed food description
+        descriptionLabel.text = menuItem.description
+        
+        // make button's corners round
+        addToOrderButton.layer.cornerRadius = 5
     }
 
     override func didReceiveMemoryWarning() {
