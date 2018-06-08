@@ -12,16 +12,33 @@ import UIKit
 class CategoryTableViewController: UITableViewController {
     /// Names of the menu categories
     var categories = [String]()
+    
+    /// Array of menu items to be fetched from the server
+    var menuItems = [MenuItem]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // get the list of categories
-        MenuController.shared.fetchCategories{ (categories) in
-            // if we indeed got the list of categories
-            if let categories = categories {
+        // Load the menu for all categories
+        MenuController.shared.fetchMenuItems() { (menuItems) in
+            // if we indeed got the menu items
+            if let menuItems = menuItems {
+                // compose the list of categories
+                for item in menuItems {
+                    // get the item's category
+                    let category = item.category
+                    
+                    // add category only if it was not added before
+                    if !self.categories.contains(category) {
+                        self.categories.append(category)
+                    }
+                }
+                
+                // remember the list of items
+                self.menuItems = menuItems
+                
                 // update the table with categories
-                self.updateUI(with: categories)
+                self.updateUI(with: self.categories)
             }
         }
     }
@@ -77,6 +94,37 @@ class CategoryTableViewController: UITableViewController {
         
         // make sure it is capitalized to clean up the appearance of categories
         cell.textLabel?.text = categoryString.capitalized
+        
+        // find the first item in the category for image fetching
+        guard let menuItem = menuItems.first(where: { item in
+            return item.category == categoryString
+        }) else { return }
+        
+        // fetch the image from the server
+        MenuController.shared.fetchImage(url: menuItem.imageURL) { image in
+            // check that the image was fetched successfully
+            guard let image = image else { return }
+            
+            // return to main thread after the network request in background
+            DispatchQueue.main.async {
+                // get the current index path
+                guard let currentIndexPath = self.tableView.indexPath(for: cell) else { return }
+                
+                // check if the cell was not yet recycled
+                guard currentIndexPath == indexPath else { return }
+                
+                // set the thumbnail image
+                cell.imageView?.image = image
+                
+                // fit the image to the cell
+                self.fitImage(in: cell)
+            }
+        }
+    }
+    
+    // adjust the cell height to make images look better
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
 
     /*

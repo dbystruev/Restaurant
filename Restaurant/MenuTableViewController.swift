@@ -94,6 +94,32 @@ class MenuTableViewController: UITableViewController {
         
         // the right label displays the price along with currency symbol
         cell.detailTextLabel?.text = String(format: "$%.2f", menuItem.price)
+        
+        // fetch the image from the server
+        MenuController.shared.fetchImage(url: menuItem.imageURL) { image in
+            // check that the image was fetched successfully
+            guard let image = image else { return }
+            
+            // return to main thread after the network request in background
+            DispatchQueue.main.async {
+                // get the current index path
+                guard let currentIndexPath = self.tableView.indexPath(for: cell) else { return }
+                
+                // check if the cell was not yet recycled
+                guard currentIndexPath == indexPath else { return }
+                
+                // set the thumbnail image
+                cell.imageView?.image = image
+                
+                // fit the image to the cell
+                self.fitImage(in: cell)
+            }
+        }
+    }
+    
+    // adjust the cell height to make images look better
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
 
     /*

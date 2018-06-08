@@ -6,7 +6,7 @@
 //  Copyright © 2018 Denis Bystruev. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 // Controller with all the networking code
 class MenuController {
@@ -26,7 +26,7 @@ class MenuController {
         let categoryURL = baseURL.appendingPathComponent("categories")
         
         // create a task for network call to get the list of categories
-        let task = URLSession.shared.dataTask(with: categoryURL) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: categoryURL) { data, response, error in
             // /categories endpoint decoded into a Categories object
             if let data = data,
                 let jsonDictionary = try? JSONSerialization.jsonObject(with: data) as? [String:Any],
@@ -45,20 +45,24 @@ class MenuController {
     /// - parameters:
     ///     - categoryName: The name of the category
     ///     - completion: The closure which accepts the MenuItem array returned by JSON
-    func fetchMenuItems(categoryName: String, completion: @escaping([MenuItem]?) -> Void) {
+    func fetchMenuItems(categoryName: String = "", completion: @escaping([MenuItem]?) -> Void) {
         
         // add /menu to the request URL
         let initialMenuURL = baseURL.appendingPathComponent("menu")
         
         // create category=<category name> component
         var components = URLComponents(url: initialMenuURL, resolvingAgainstBaseURL: true)!
-        components.queryItems = [URLQueryItem(name: "category", value: categoryName)]
+        
+        // add ?category=<category name> only if categoryName is not empty
+        if categoryName != "" {
+            components.queryItems = [URLQueryItem(name: "category", value: categoryName)]
+        }
         
         // compose the full url .../menu?category=<category name>
         let menuURL = components.url!
         
         // create a task for category menu network call
-        let task = URLSession.shared.dataTask(with: menuURL) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: menuURL) { data, response, error in
             // data from /menu converted into an array of MenuItem objects
             let jsonDecoder = JSONDecoder()
             if let data = data,
@@ -99,7 +103,7 @@ class MenuController {
         request.httpBody = jsonData
         
         // create a task for order network call
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
             // POST to /order returns JSON data which has to be decoded into PreparationTime
             let jsonDecoder = JSONDecoder()
             if let data = data,
@@ -111,6 +115,34 @@ class MenuController {
         }
         
         // begin the order network call
+        task.resume()
+    }
+    
+    /// Fetch an image from the server
+    /// - parameters:
+    ///     - url: An image URL
+    ///     - completion: A handler that receives UIImage data
+    func fetchImage(url: URL, completion: @escaping (UIImage?) -> Void) {
+        // construct URL components from URL
+        guard var components = URLComponents(url: url, resolvingAgainstBaseURL: false) else { return }
+        
+        // replace the host for the base URL's host
+        components.host = baseURL.host
+        
+        // construct the new url with the replaced host
+        guard let url = components.url else { return }
+        
+        // create a task for image fetch URL call
+        let task = URLSession.shared.dataTask(with: url) { data, responce, error in
+            // check the data is returned and image is valid
+            if let data = data, let image = UIImage(data: data) {
+                completion(image)
+            } else {
+                completion(nil)
+            }
+        }
+        
+        // begin the image fetch network call
         task.resume()
     }
 }
