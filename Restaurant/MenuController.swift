@@ -22,6 +22,12 @@ class MenuController {
     ///     - completion: The closure which accepts the array of strings returned by JSON
     func fetchCategories(completion: @escaping ([String]?) -> Void) {
         
+        // if data is local use it
+        if LocalData.isLocal {
+            completion(LocalData.categories)
+            return
+        }
+        
         // full URL for category request is.../categories
         let categoryURL = baseURL.appendingPathComponent("categories")
         
@@ -46,6 +52,12 @@ class MenuController {
     ///     - categoryName: The name of the category
     ///     - completion: The closure which accepts the MenuItem array returned by JSON
     func fetchMenuItems(categoryName: String = "", completion: @escaping([MenuItem]?) -> Void) {
+        
+        // if data is local use it
+        if LocalData.isLocal {
+            completion(LocalData.menuItems)
+            return
+        }
         
         // add /menu to the request URL
         let initialMenuURL = baseURL.appendingPathComponent("menu")
@@ -82,6 +94,13 @@ class MenuController {
     ///     - menuIds: Array of the dishes' IDs in the order
     ///     - completion: A closure that takes the order preparation time
     func submitOrder(menuIds: [Int], completion: @escaping (Int?) -> Void) {
+        
+        // if data is local fake the preparation time
+        if LocalData.isLocal {
+            completion(5 * menuIds.count)
+            return
+        }
+        
         // full URL for order posting is .../order
         let orderURL = baseURL.appendingPathComponent("order")
         
@@ -123,6 +142,13 @@ class MenuController {
     ///     - url: An image URL
     ///     - completion: A handler that receives UIImage data
     func fetchImage(url: URL, completion: @escaping (UIImage?) -> Void) {
+        
+        // if data is local use it
+        if LocalData.isLocal {
+            completion(UIImage(named: url.relativeString))
+            return
+        }
+        
         // construct URL components from URL
         guard var components = URLComponents(url: url, resolvingAgainstBaseURL: false) else { return }
         
