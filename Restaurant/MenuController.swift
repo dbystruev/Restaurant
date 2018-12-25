@@ -55,7 +55,7 @@ class MenuController {
         
         // if data is local use it
         if LocalData.isLocal {
-            completion(LocalData.menuItems)
+            completion(LocalData.menuItems.filter { $0.category == categoryName || categoryName.isEmpty })
             return
         }
         
