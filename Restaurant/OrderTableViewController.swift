@@ -173,7 +173,7 @@ class OrderTableViewController: UITableViewController, AddToOrderDelegate {
     }
 
     // Support editing the order table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the item from the order list
             menuItems.remove(at: indexPath.row)
