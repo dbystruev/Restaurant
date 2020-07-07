@@ -76,9 +76,13 @@
 			children = (
 				699313D720C942F300B9CD5E /* AddToOrderDelegate.swift */,
 				6964A99620C7258C00921F08 /* AppDelegate.swift */,
+				6964A99D20C7259300921F08 /* Assets.xcassets */,
 				6964A9AC20C72EE000921F08 /* CategoryTableViewController.swift */,
+				6964A9A220C7259300921F08 /* Info.plist */,
 				6964A9B420C7342E00921F08 /* IntermediaryModels.swift */,
+				6964A99F20C7259300921F08 /* LaunchScreen.storyboard */,
 				6995CE4521D1EAAA003E2AE3 /* LocalData.swift */,
+				6964A99A20C7258C00921F08 /* Main.storyboard */,
 				6964A9B620C7372200921F08 /* MenuController.swift */,
 				6964A9B220C7325200921F08 /* MenuItem.swift */,
 				6964A9B020C7313700921F08 /* MenuItemDetailViewController.swift */,
@@ -86,10 +90,6 @@
 				699313DB20C9CD1A00B9CD5E /* OrderConfirmationViewController.swift */,
 				6964A9AE20C72EF900921F08 /* OrderTableViewController.swift */,
 				699313D920C9491600B9CD5E /* UITableViewControllerExtension.swift */,
-				6964A99A20C7258C00921F08 /* Main.storyboard */,
-				6964A99D20C7259300921F08 /* Assets.xcassets */,
-				6964A99F20C7259300921F08 /* LaunchScreen.storyboard */,
-				6964A9A220C7259300921F08 /* Info.plist */,
 			);
 			path = Restaurant;
 			sourceTree = "<group>";
@@ -126,7 +126,7 @@
 				TargetAttributes = {
 					6964A99220C7258C00921F08 = {
 						CreatedOnToolsVersion = 9.4;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1150;
 					};
 				};
 			};
@@ -322,15 +322,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2020.07.07;
 				DEVELOPMENT_TEAM = 8J39KF9DMS;
 				INFOPLIST_FILE = Restaurant/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = net.armenu.Restaurant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -340,15 +342,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2020.07.07;
 				DEVELOPMENT_TEAM = 8J39KF9DMS;
 				INFOPLIST_FILE = Restaurant/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = net.armenu.Restaurant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -35,7 +35,7 @@ class MenuController {
         let task = URLSession.shared.dataTask(with: categoryURL) { data, response, error in
             // /categories endpoint decoded into a Categories object
             if let data = data,
-                let jsonDictionary = try? JSONSerialization.jsonObject(with: data) as? [String:Any],
+                let jsonDictionary = ((try? JSONSerialization.jsonObject(with: data) as? [String:Any]) as [String : Any]??),
                 let categories = jsonDictionary?["categories"] as? [String] {
                 completion(categories)
             } else {
