@@ -15,7 +15,7 @@ class MenuController {
     
     /// Base URL where all requests should go.  Change this to your own server.
     /// The server app for macOS can be downloaded [here](https://www.dropbox.com/sh/bmbhzxqi1886kix/AABFwZJiMj_wxqaUphHFJh5ba?dl=1)
-    let baseURL = URL(string: "http://api.armenu.net:8090/")!
+    let baseURL = URL(string: "http://oracle.getoutfit.co:8090/")!
     
     /// Execute GET request for the categories with /categories
     /// - parameters:
