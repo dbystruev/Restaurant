@@ -2,8 +2,7 @@
 //  MenuController.swift
 //  Restaurant
 //
-//  Created by Denis Bystruev on 06/06/2018.
-//  Copyright © 2018 Denis Bystruev. All rights reserved.
+//   Created by AnaSophia Rua on 05/02/2022.
 //
 
 import UIKit
